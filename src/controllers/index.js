@@ -52,6 +52,7 @@ addcontac.addEventListener("click",function(){
         });
         if (nombre!=""&&apellido!=""&&numero!=null&&correo!="") {
             listContacts.addContacto(nombre,apellido,numero,correo)
+            console.log(listContacts.comprobacion())
         }else{
             alert("Por favor, complete todos los campos.");
         }
@@ -94,13 +95,79 @@ seecontac.addEventListener("click",function(){
         chartxt.innerText=comprobacion.getCorreoElectronico()
         card.appendChild(chartxt)
         
-        listContacts.deleteContacto()
+        listContacts.moveContacto()
         comprobacion= listContacts.seeContacto()
-        console.log(comprobacion.getNombre()+" = "+ comprobacion2.getNombre())
        } while (comprobacion.getNombre()!=comprobacion2.getNombre());
     }
     else{
         alert("ingrese un contacto.");
     }
     
+})
+
+let findcontac = document.getElementById("btn-find")
+findcontac.addEventListener("click",function(){
+    if(listContacts.comprobacion()>0){
+       
+            const card= document.createElement("div");
+            divchar.appendChild(card)
+
+            let chartxt= document.createElement("p");
+            chartxt.innerText="ingrese el nombre del contacto" 
+            card.appendChild(chartxt)
+            let char= document.createElement("input");
+            card.appendChild(char)
+            char.setAttribute("id", "idinput");
+            
+            let Btn= document.createElement("button");
+            Btn.innerText="buscar contacto" 
+            card.appendChild(Btn)
+            Btn.addEventListener("click",function(){
+            let info=document.getElementById("idinput").value;
+            let contac = listContacts.searchContacto(info)
+
+            let charTXT= document.createElement("h1");
+            charTXT.innerText="nombre" 
+            card.appendChild(charTXT)
+            chartxt= document.createElement("p");
+            chartxt.innerText= contac.getNombre()
+            card.appendChild(chartxt)
+        
+            charTXT= document.createElement("h1");
+            charTXT.innerText="apellido" 
+            card.appendChild(charTXT)
+            chartxt= document.createElement("p");
+            chartxt.innerText=contac.getApellido()
+            card.appendChild(chartxt)
+        
+            charTXT= document.createElement("h1");
+            charTXT.innerText="numero" 
+            card.appendChild(charTXT)
+            chartxt= document.createElement("p");
+            chartxt.innerText=contac.getTelefono()
+            card.appendChild(chartxt)
+
+            charTXT= document.createElement("h1");
+            charTXT.innerText="correo" 
+            card.appendChild(charTXT)
+            chartxt= document.createElement("p");
+            chartxt.innerText=contac.getCorreoElectronico()
+            card.appendChild(chartxt)
+            })
+            
+    
+    }
+    else{
+        alert("ingrese un contacto.");
+    }
+})
+
+let delcontac = document.getElementById("btn-del")
+delcontac.addEventListener("click",function(){
+    if(listContacts.comprobacion()>0){
+    listContacts.deleteContacto()
+    alert("se elimino un contacto.");
+    }else{
+        alert("nop hay contactos para borrar.");
+    }
 })

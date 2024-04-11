@@ -11,15 +11,29 @@ export class listaContacto{
     }
     seeContacto(){
         let objcontacto=cola.peek()
-        console.log(objcontacto.getNombre())
         return objcontacto
         }
-    deleteContacto(){
+
+    searchContacto(info){
+        let objcontacto
+        do {
+             objcontacto=cola.dequeue()
+            cola.enqueue(objcontacto)
+            if(info===objcontacto.getNombre()){
+                return objcontacto;
+            }
+        } while (info===objcontacto.getNombre());
+    }
+
+    moveContacto(){
         let objcontacto=cola.dequeue()
         cola.enqueue(objcontacto)
-
+    }
+    deleteContacto(){
+        cola.dequeue()
     }
     comprobacion(){
         return cola.size()
     }
+    
 }

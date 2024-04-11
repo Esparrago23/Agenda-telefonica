@@ -3,7 +3,7 @@ export class Node {
     #next
     constructor(data){
        this.#data = data
-        this.#next = undefined
+        this.#next = null
     }
     getData () {
         return this.#data

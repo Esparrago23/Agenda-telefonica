@@ -25,19 +25,23 @@ export class Queue {
         if(this.isEmpty()) {
             return null;
         }
-        let value = this.#front;
+        const  value = this.#front;
         this.#front = this.#front.next; 
         this.#count--;
 
-        if (this.isEmpty()) {
+        if (!this.#front) {
             this.#head = null;
         }
         return value.getData();
     }
 
     peek(){
-        let current= this.#front.getData();
-        return current;
+        if (!this.isEmpty()) {
+            let current= this.#front;
+            return current.getData();
+        } else {
+            return null;
+        }
     }
     isEmpty(){
         return this.#head === null

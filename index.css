@@ -2,22 +2,21 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
 }
 
 .fondo {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #476bc7;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px black;
 }
 
 button {
     padding: 10px 20px;
     margin-right: 10px;
-    background-color: #007bff;
+    background-color: #244da3;
     color: #fff;
     border: none;
     border-radius: 5px;
